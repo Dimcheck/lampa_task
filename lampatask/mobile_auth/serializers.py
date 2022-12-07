@@ -26,21 +26,16 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
 class ClientCustomRegistrationSerializer(RegisterSerializer):
     client = serializers.PrimaryKeyRelatedField(read_only=True)
-    login = PhoneNumberField(region='UA')
+    username = PhoneNumberField(region='UA')
 
-    def get_cleaned_data(self):
-        data = super(ClientCustomRegistrationSerializer, self).get_cleaned_data()
-        extra_data = {
-            'login': self.validated_data.get('login', ''),
-        }
-        data.update(extra_data)
-        return data
+    def validate_username(self, username):
+        return username.as_e164
 
     def save(self, request):
         user = super(ClientCustomRegistrationSerializer, self).save(request)
         user.is_client = True
         user.save()
-        client = Client(client=user, login=self.cleaned_data.get('login'))
+        client = Client(client=user)
         client.save()
         return user
 

@@ -7,6 +7,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class CustomUser(AbstractUser):
     is_client = models.BooleanField(default=False)
     is_repairman = models.BooleanField(default=False)
+    # login
 
 
 class Client(models.Model):
@@ -17,10 +18,10 @@ class Client(models.Model):
         null=True,
         # primary_key=True,
     )
-    login = PhoneNumberField(region='UA')
+    # login = PhoneNumberField(region='UA')
 
     def __repr__(self) -> str:
-        return str([self.client.login, self.client.password])
+        return str([self.client.username, self.client.password])
 
 
 class Repairman(models.Model):
