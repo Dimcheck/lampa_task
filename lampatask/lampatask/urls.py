@@ -19,6 +19,7 @@ from mobile_auth.views import (ClientRegistrationView, ClientsView,
                                CustomUsersView, RepairmanRegistrationView,
                                RepairmansView)
 from rest_framework.routers import DefaultRouter
+# import allauth
 
 router = DefaultRouter()
 router.register(r'clients', ClientsView, basename='client_view')
@@ -35,5 +36,6 @@ urlpatterns = [
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('registration/client/', ClientRegistrationView.as_view(), name='register-client'),
     path('registration/repairman/', RepairmanRegistrationView.as_view(), name='repairman-client'),
+    path('accounts/', include('allauth.urls')),
 
 ] + router.urls
