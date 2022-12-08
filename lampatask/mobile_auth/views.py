@@ -4,7 +4,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from mobile_auth.models import Client, CustomUser, Repairman
 from mobile_auth.serializers import (ClientCustomRegistrationSerializer,
-                                     ClientrSerializer, CustomUserSerializer,
+                                     ClientSerializer, CustomUserSerializer,
                                      RepairmanCustomRegistrationSerializer,
                                      RepairmanSerializer)
 
@@ -21,7 +21,7 @@ class RepairmansView(ModelViewSet):
 
 class ClientsView(ModelViewSet):
     queryset = Client.objects.all()
-    serializer_class = ClientrSerializer
+    serializer_class = ClientSerializer
 
 
 class ClientRegistrationView(RegisterView):

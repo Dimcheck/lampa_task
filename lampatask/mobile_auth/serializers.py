@@ -1,9 +1,9 @@
 from phonenumber_field.serializerfields import PhoneNumberField
 from rest_auth.registration.serializers import RegisterSerializer
 from rest_framework import serializers
-from rest_framework.authtoken.models import Token
 
-from mobile_auth.models import Client, Repairman, CustomUser
+from mobile_auth.models import Client, CustomUser, Repairman
+from mobile_re.serializers import MobileRequestSerializer
 
 
 class RepairmanSerializer(serializers.ModelSerializer):
@@ -12,7 +12,9 @@ class RepairmanSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ClientrSerializer(serializers.ModelSerializer):
+class ClientSerializer(serializers.ModelSerializer):
+    request = MobileRequestSerializer(many=True)
+
     class Meta:
         model = Client
         fields = '__all__'

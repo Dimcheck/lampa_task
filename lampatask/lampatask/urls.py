@@ -18,6 +18,8 @@ from django.urls import include, path
 from mobile_auth.views import (ClientRegistrationView, ClientsView,
                                CustomUsersView, RepairmanRegistrationView,
                                RepairmansView)
+
+from mobile_re.views import MobileRequestView, MobileInvoiceView
 from rest_framework.routers import DefaultRouter
 # import allauth
 
@@ -25,6 +27,8 @@ router = DefaultRouter()
 router.register(r'clients', ClientsView, basename='client_view')
 router.register(r'repairmans', RepairmansView, basename='repairman_view')
 router.register(r'users', CustomUsersView, basename='users_view')
+router.register(r'user_request', MobileRequestView, basename='requests_view')
+router.register(r'repairman_invoice', MobileInvoiceView, basename='invoices_view')
 
 app_name = 'mobile_auth'
 
