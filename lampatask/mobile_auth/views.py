@@ -29,8 +29,16 @@ class ClientsView(ModelViewSet):
 
 
 class ClientRegistrationView(RegisterView):
+    """
+    Accept the following POST parameters: username, password
+    Return the REST Framework Token Object's key.
+    """
     serializer_class = ClientCustomRegistrationSerializer
 
 
 class RepairmanRegistrationView(RegisterView):
+    """
+    Accept the following POST parameters: username, password
+    Return the REST Framework Token Object's key.
+    """
     serializer_class = RepairmanCustomRegistrationSerializer

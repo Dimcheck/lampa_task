@@ -42,14 +42,13 @@ router = DefaultRouter()
 router.register(r'clients', ClientsView, basename='client_view')
 router.register(r'repairmans', RepairmansView, basename='repairman_view')
 router.register(r'users', CustomUsersView, basename='users_view')
-router.register(r'client/request/', MobileRequestView, basename='requests_view')
-router.register(r'repairman/invoice/', MobileInvoiceView, basename='invoices_view')
+router.register(r'client/request', MobileRequestView, basename='requests_view')
+router.register(r'repairman/invoice', MobileInvoiceView, basename='invoices_view')
 
 
 urlpatterns = [
     path('', include('mobile_re.urls')),
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
     path('users-auth/', include('mobile_auth.urls')),
     path('rest-auth/', include('rest_auth.urls')),
     
