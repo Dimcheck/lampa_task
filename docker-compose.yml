@@ -1,0 +1,27 @@
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "python lampatask/manage.py makemigrations
+                      && python lampatask/manage.py migrate
+                      && python lampatask/manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    container_name: django
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+  db:
+    image: postgres:latest
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB="lampa"
+      - POSTGRES_USER="user_lampa"
+      - POSTGRES_PASSWORD="1111"
+    ports:
+      - "5432:5432"
+
+

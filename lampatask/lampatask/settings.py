@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-z@0dgng=tlfq@w4hvv+xyzsjt4a0#4e(eije02%!6l%qk5w18h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -98,8 +98,8 @@ DATABASES = {
         'NAME': 'lampa',
         'USER': 'user_lampa',
         'PASSWORD': '1111',
-        'HOST': 'localhost',
-        'PORT': '',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
