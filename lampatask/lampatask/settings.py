@@ -52,6 +52,9 @@ INSTALLED_APPS = [
 
     # cors
     'corsheaders',
+
+    # swagger
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -171,7 +174,6 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-# CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8080',
