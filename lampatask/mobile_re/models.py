@@ -19,7 +19,7 @@ class MobileRequest(models.Model):
         related_name='request',
     )
     phone_model = models.CharField(max_length=50)
-    problem_desc = models.TextField()
+    problem_desc = models.CharField(max_length=300)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='in progress')
 
     def __str__(self) -> str:

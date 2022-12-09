@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_auth.registration.views import RegisterView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from mobile_auth.models import Client, CustomUser, Repairman
 from mobile_auth.serializers import (ClientCustomRegistrationSerializer,
@@ -10,16 +11,19 @@ from mobile_auth.serializers import (ClientCustomRegistrationSerializer,
 
 
 class CustomUsersView(ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
 
 
 class RepairmansView(ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Repairman.objects.all()
     serializer_class = RepairmanSerializer
 
 
 class ClientsView(ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
 
