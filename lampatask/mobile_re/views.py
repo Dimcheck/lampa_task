@@ -18,6 +18,12 @@ class MobileRequestView(ModelViewSet):
     serializer_class = MobileRequestSerializer
 
 
+class MobileInvoiceUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = MobileInvoice.objects.all()
+    serializer_class = MobileInvoiceSerializer
+
+
 class MobileInvoiceView(ModelViewSet):
     permission_classes = (IsAuthenticated,)
     queryset = MobileInvoice.objects.all()

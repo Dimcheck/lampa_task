@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_auth.registration.views import RegisterView
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 
 from mobile_auth.models import Client, CustomUser, Repairman
 from mobile_auth.serializers import (ClientCustomRegistrationSerializer,
@@ -17,7 +17,7 @@ class CustomUsersView(ModelViewSet):
 
 
 class RepairmansView(ModelViewSet):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticated,)
     queryset = Repairman.objects.all()
     serializer_class = RepairmanSerializer
 
