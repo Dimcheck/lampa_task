@@ -32,6 +32,7 @@ class MobileInvoice(models.Model):
         on_delete=models.CASCADE,
         blank=True,
         primary_key=True,
+        related_name='mobile'
     )
     price = models.IntegerField()
 
