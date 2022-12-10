@@ -11,18 +11,21 @@ from mobile_auth.serializers import (ClientCustomRegistrationSerializer,
 
 
 class CustomUsersView(ModelViewSet):
+    http_method_names = ('get',)
     permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
 
 
 class RepairmansView(ModelViewSet):
+    http_method_names = ('get',)
     permission_classes = (IsAuthenticated,)
     queryset = Repairman.objects.all()
     serializer_class = RepairmanSerializer
 
 
 class ClientsView(ModelViewSet):
+    http_method_names = ('get',)
     permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
@@ -32,7 +35,12 @@ class ClientRegistrationView(RegisterView):
     """
     Accept the following POST parameters: username, password1, password2
     Return the REST Framework Token Object's key.
+
+    In field "username" enter a phone number starting from 38 or 098,
+    this field will go through a serializer and will have in the end result smth like:
+    +380985673423.
     """
+    queryset = CustomUser.objects.all()
     serializer_class = ClientCustomRegistrationSerializer
 
 
@@ -41,4 +49,5 @@ class RepairmanRegistrationView(RegisterView):
     Accept the following POST parameters: username, password1, password2
     Return the REST Framework Token Object's key.
     """
+    queryset = CustomUser.objects.all()
     serializer_class = RepairmanCustomRegistrationSerializer
